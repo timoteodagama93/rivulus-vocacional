@@ -10,7 +10,7 @@ import { collection, deleteDoc, doc, getDoc, setDoc, serverTimestamp } from "fir
 import { db } from "@/lib/firebase/config";
 import { COLLECTIONS } from "@/lib/firebase/collections";
 import PageHeader from "@/components/layout/PageHeader";
-import type { CursoEscola, Docente, Escola, InfraestruturaEscola } from "@/types";
+import type { CursoEscola, Docente, Escola, InfraestruturaEscola, TipoInstituicao } from "@/types";
 
 const fabricaCurso = (): CursoEscola => ({
     id: crypto.randomUUID?.() ?? `${Date.now()}-${Math.random()}`,
@@ -79,7 +79,10 @@ export default function AdminEscolaDetalhesPage() {
         load();
     }, [id]);
 
-    const atualizarCampo = (campo: keyof Escola, valor: string | number | boolean) => {
+    const atualizarCampo = <K extends keyof Escola>(
+        campo: K,
+        valor: Escola[K]
+    ) => {
         setForm((prev) => ({ ...prev, [campo]: valor }));
     };
 
@@ -192,12 +195,15 @@ export default function AdminEscolaDetalhesPage() {
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 18 }}>
                     <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                         Tipo
-                        <select value={form.tipo ?? "colegio"} onChange={(e) => atualizarCampo("tipo", e.target.value)}>
-                            <option value="colegio">Colégio</option>
-                            <option value="instituto">Instituto</option>
-                            <option value="universidade">Universidade</option>
-                            <option value="centro_formacao">Centro de formação</option>
-                        </select>
+                        <select
+                            value={form.tipo ?? "colegio"}
+                            onChange={(e) =>
+                                atualizarCampo(
+                                    "tipo",
+                                    e.target.value as TipoInstituicao
+                                )
+                            }
+                        />
                     </label>
                     <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                         Município
