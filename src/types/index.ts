@@ -21,6 +21,7 @@ export interface UserProfile {
 // ── Estudante ────────────────────────────────────────────────
 
 export interface Estudante extends UserProfile {
+  id?: string;
   role: "estudante";
   nome: string;
   nomeBusca: string;
