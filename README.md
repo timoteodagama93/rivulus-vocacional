@@ -1,4 +1,4 @@
-# Rivulus Vocacional
+# Gama Vocacional
 ### Plataforma de Orientação Vocacional e Profissional
 **Academia Gama** | Angola
 
