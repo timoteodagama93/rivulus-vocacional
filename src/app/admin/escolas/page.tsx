@@ -24,7 +24,7 @@ export default function AdminEscolasPage() {
     async function load() {
       try {
         const snap = await getDocs(collection(db, COLLECTIONS.ESCOLAS));
-        setEscolas(snap.docs.map((doc) => ({ id: doc.id, ...(doc.data() as Escola) })));
+        setEscolas(snap.docs.map((doc) => ({ ...(doc.data() as Escola) })));
       } catch (err) {
         console.error(err);
         setErro("Não foi possível carregar as escolas.");
