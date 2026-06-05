@@ -74,8 +74,23 @@ export default function AdminAlunoDetalhesPage() {
                     getDocs(collection(db, COLLECTIONS.ESCOLAS)),
                 ]);
 
-                const resultadosList = resultadosSnap.docs.map((doc) => ({ id: doc.id, ...(doc.data() as ResultadoTeste) }));
-                const escolas = escolasSnap.docs.map((doc) => ({ id: doc.id, ...(doc.data() as Escola) }));
+                const resultadosList = resultadosSnap.docs.map((documento) => {
+                    const data = documento.data() as ResultadoTeste;
+
+                    return {
+                        ...data,
+                        id: documento.id,
+                    };
+                });
+
+                const escolas = escolasSnap.docs.map((documento) => {
+                    const data = documento.data() as Escola;
+
+                    return {
+                        ...data,
+                        id: documento.id,
+                    };
+                });
 
                 setResultados(resultadosList);
                 setRecommendations(recomendarEscolasParaAluno(alunoData, escolas, resultadosList, 4));
