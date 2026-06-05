@@ -3,8 +3,10 @@
 // GAMA VOCACIONAL — Dashboard do Administrador
 // ============================================================
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { collection, getCountFromServer, query, where, getDocs, orderBy, limit } from "firebase/firestore";
 import { db } from "@/lib/firebase/config";
+import { useAuth } from "@/lib/hooks/useAuth";
 import { COLLECTIONS } from "@/lib/firebase/collections";
 import PageHeader from "@/components/layout/PageHeader";
 import StatCard from "@/components/ui/StatCard";
@@ -28,6 +30,8 @@ interface AlunoRecente {
 }
 
 export default function DashboardAdmin() {
+  const router = useRouter();
+  const { logout } = useAuth();
   const [kpis, setKpis] = useState<KPIs>({
     totalAlunos: 0, testesRealizados: 0, relatoriosGerados: 0,
     encaminhamentos: 0, relatoriosPendentes: 0, alunosAtivos: 0,
@@ -88,12 +92,24 @@ export default function DashboardAdmin() {
         title="Dashboard Executivo"
         subtitle={hoje.charAt(0).toUpperCase() + hoje.slice(1)}
         actions={
-          <Link href="/admin/alunos/novo" style={{ textDecoration: "none" }}>
-            <button className="btn btn-primary btn-sm">
-              <i className="ti ti-plus" aria-hidden="true" />
-              Novo aluno
+          <>
+            <Link href="/admin/alunos/novo" style={{ textDecoration: "none" }}>
+              <button className="btn btn-primary btn-sm">
+                <i className="ti ti-plus" aria-hidden="true" />
+                Novo aluno
+              </button>
+            </Link>
+            <button
+              className="btn btn-secondary btn-sm"
+              onClick={async () => {
+                await logout();
+                router.push("/auth/login");
+              }}
+            >
+              <i className="ti ti-logout" aria-hidden="true" />
+              Sair
             </button>
-          </Link>
+          </>
         }
       />
 

@@ -4,7 +4,7 @@
 // /avaliacoes/[testeId]
 // ============================================================
 import { useEffect, useState, useCallback } from "react";
-import { useParams, useRouter } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { doc, getDoc, collection, addDoc, setDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "@/lib/firebase/config";
 import { useAuth } from "@/lib/hooks/useAuth";
@@ -61,7 +61,12 @@ function gerarQuestoesDemo(tipo: TipoTeste, total: number): Questao[] {
 export default function TestePlayerPage() {
   const params = useParams();
   const router = useRouter();
-  const { user } = useAuth();
+  const searchParams = useSearchParams();
+  const { user, role } = useAuth();
+
+  const studentIdParam = searchParams.get("studentId");
+  const targetStudentId = role === "administrador" && studentIdParam ? studentIdParam : user?.uid;
+  const delegatedBy = role === "administrador" && studentIdParam ? user?.uid : undefined;
 
   const tipoTeste = params.testeId as TipoTeste;
   const infoTeste = CATALOGO_TESTES.find((t) => t.tipo === tipoTeste);
@@ -109,9 +114,10 @@ export default function TestePlayerPage() {
   }, [questaoAtual]);
 
   const submeter = async () => {
-    if (!user || submitting || !infoTeste || !todasRespondidas) return;
+    if (!user || submitting || !infoTeste || !todasRespondidas || !targetStudentId) return;
     setSubmitting(true);
     try {
+      const estudanteId = targetStudentId;
       const respostasArray: RespostaQuestao[] = questoes.map((q) => ({
         questaoId: q.id,
         valor: respostas[q.id] ?? 0,
@@ -122,9 +128,9 @@ export default function TestePlayerPage() {
 
       // Salva o resultado
       const resultadoRef = await addDoc(
-        collection(db, COLLECTIONS.ESTUDANTES, user.uid, "resultados"),
+        collection(db, COLLECTIONS.ESTUDANTES, estudanteId, "resultados"),
         {
-          estudanteId: user.uid,
+          estudanteId,
           testeId: tipoTeste,
           testeTipo: tipoTeste,
           testeArea: infoTeste.area,
@@ -140,13 +146,14 @@ export default function TestePlayerPage() {
           atualizadoEm: serverTimestamp(),
           duracaoSegundos,
           versaoTeste: 1,
+          delegatedBy: delegatedBy || null,
         }
       );
 
       // Escreve o `id` no documento para facilitar leituras posteriores
       try {
         await setDoc(
-          doc(db, COLLECTIONS.ESTUDANTES, user.uid, "resultados", resultadoRef.id),
+          doc(db, COLLECTIONS.ESTUDANTES, estudanteId, "resultados", resultadoRef.id),
           { id: resultadoRef.id },
           { merge: true }
         );
@@ -155,7 +162,7 @@ export default function TestePlayerPage() {
       }
 
       await setDoc(
-        doc(db, COLLECTIONS.ESTUDANTES, user.uid),
+        doc(db, COLLECTIONS.ESTUDANTES, estudanteId),
         {
           testesConcluidos: {
             [tipoTeste]: {
@@ -247,6 +254,18 @@ export default function TestePlayerPage() {
           </span>
         </div>
       </div>
+
+      {role === "administrador" && studentIdParam && (
+        <div style={{
+          padding: "12px 24px",
+          background: "#FEF3C7",
+          border: "1px solid #FCD34D",
+          color: "#92400E",
+          fontSize: 13,
+        }}>
+          Este teste será registado para o aluno <strong>{studentIdParam}</strong>.
+        </div>
+      )}
 
       {/* Barra de progresso */}
       <div style={{ height: 3, background: "var(--border)" }}>

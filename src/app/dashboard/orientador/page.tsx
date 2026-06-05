@@ -2,10 +2,12 @@
 // ============================================================
 // GAMA VOCACIONAL — Dashboard do Orientador
 // ============================================================
+import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/hooks/useAuth";
 
 export default function AdvisorDashboard() {
-    const { profile, user } = useAuth();
+    const router = useRouter();
+    const { profile, user, logout } = useAuth();
 
     return (
         <main className="min-h-screen bg-slate-50 p-6">
@@ -16,6 +18,16 @@ export default function AdvisorDashboard() {
                 <p className="text-slate-500 text-sm">
                     {profile?.email || user?.email}
                 </p>
+                <button
+                    className="btn btn-secondary btn-sm mt-4"
+                    onClick={async () => {
+                        await logout();
+                        router.push("/auth/login");
+                    }}
+                >
+                    <i className="ti ti-logout" aria-hidden="true" />
+                    Sair
+                </button>
             </header>
 
             <section className="grid grid-cols-1 md:grid-cols-3 gap-4">

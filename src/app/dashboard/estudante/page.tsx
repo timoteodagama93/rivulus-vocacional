@@ -3,6 +3,7 @@
 // GAMA VOCACIONAL — Dashboard do Estudante
 // ============================================================
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { collection, query, where, getDocs, doc, getDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase/config";
 import { useAuth } from "@/lib/hooks/useAuth";
@@ -21,7 +22,8 @@ interface DashboardData {
 }
 
 export default function DashboardEstudante() {
-  const { user } = useAuth();
+  const router = useRouter();
+  const { user, logout } = useAuth();
   const [data, setData] = useState<DashboardData>({
     estudante: null, perfil: null, testesFeitos: 0, relatorios: 0,
   });
@@ -79,6 +81,18 @@ export default function DashboardEstudante() {
       <PageHeader
         title={`${saudacao}, ${nome}`}
         subtitle="O teu mapa de futuro começa aqui."
+        actions={
+          <button
+            className="btn btn-secondary btn-sm"
+            onClick={async () => {
+              await logout();
+              router.push("/auth/login");
+            }}
+          >
+            <i className="ti ti-logout" aria-hidden="true" />
+            Sair
+          </button>
+        }
       />
 
       <div className="page-body">
