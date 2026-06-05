@@ -31,7 +31,7 @@ interface AuthContextType extends AuthState {
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
-async function resolveUserProfile(uid: string) {
+async function resolveUserProfile(uid: string): Promise<{ profile: UserProfile | null; role: UserRole | null }>{
   const [adminSnap, orientadorSnap, estudanteSnap, studentsSnap, usersSnap] = await Promise.all([
     getDoc(doc(db, COLLECTIONS.ADMINS, uid)),
     getDoc(doc(db, COLLECTIONS.ORIENTADORES, uid)),
@@ -51,36 +51,66 @@ async function resolveUserProfile(uid: string) {
   }
 
   if (adminSnap.exists()) {
-    const p = adminSnap.data() as UserProfile;
-    return { profile: { ...p, role: "administrador" }, role: "administrador" };
+    const p = adminSnap.data() as Partial<UserProfile>;
+    const profile: UserProfile = {
+      uid: p.uid || uid,
+      email: p.email || "",
+      role: "administrador",
+      createdAt: (p.createdAt as any) ? new Date(p.createdAt as any) : new Date(),
+      updatedAt: (p.updatedAt as any) ? new Date(p.updatedAt as any) : new Date(),
+      ativo: (p.ativo as any) ?? true,
+    };
+    return { profile, role: "administrador" };
   }
   if (orientadorSnap.exists()) {
-    const p = orientadorSnap.data() as UserProfile;
-    return { profile: { ...p, role: "orientador" }, role: "orientador" };
+    const p = orientadorSnap.data() as Partial<UserProfile>;
+    const profile: UserProfile = {
+      uid: p.uid || uid,
+      email: p.email || "",
+      role: "orientador",
+      createdAt: (p.createdAt as any) ? new Date(p.createdAt as any) : new Date(),
+      updatedAt: (p.updatedAt as any) ? new Date(p.updatedAt as any) : new Date(),
+      ativo: (p.ativo as any) ?? true,
+    };
+    return { profile, role: "orientador" };
   }
   if (estudanteSnap.exists()) {
-    const p = estudanteSnap.data() as UserProfile;
-    return { profile: { ...p, role: "estudante" }, role: "estudante" };
+    const p = estudanteSnap.data() as Partial<UserProfile> & Record<string, any>;
+    const profile: UserProfile = {
+      uid: p.uid || uid,
+      email: p.email || "",
+      role: "estudante",
+      createdAt: p.createdAt ? new Date(p.createdAt) : new Date(),
+      updatedAt: p.updatedAt ? new Date(p.updatedAt) : new Date(),
+      ativo: p.ativo ?? true,
+    };
+    return { profile, role: "estudante" };
   }
   if (studentsSnap.exists()) {
-    const p = studentsSnap.data() as UserProfile;
-    return { profile: { ...p, role: "estudante" }, role: "estudante" };
+    const p = studentsSnap.data() as Partial<UserProfile> & Record<string, any>;
+    const profile: UserProfile = {
+      uid: p.uid || uid,
+      email: p.email || "",
+      role: "estudante",
+      createdAt: p.createdAt ? new Date(p.createdAt) : new Date(),
+      updatedAt: p.updatedAt ? new Date(p.updatedAt) : new Date(),
+      ativo: p.ativo ?? true,
+    };
+    return { profile, role: "estudante" };
   }
 
   if (usersSnap.exists()) {
-    const data = usersSnap.data() as Partial<UserProfile> & { role?: string };
+    const data = usersSnap.data() as Partial<UserProfile> & { role?: string } & Record<string, any>;
     const mapped = mapExternalRole(data.role);
     if (mapped) {
       const profile: UserProfile = {
-        uid: (data as any).uid || uid,
-        email: (data as any).email || null,
-        displayName: (data as any).displayName || null,
-        pictureUrl: (data as any).pictureUrl || null,
+        uid: data.uid || uid,
+        email: data.email || "",
         role: mapped,
-        createdAt: (data as any).createdAt ? new Date((data as any).createdAt) : new Date(),
-        updatedAt: (data as any).updatedAt ? new Date((data as any).updatedAt) : new Date(),
-        isActive: (data as any).isActive ?? true,
-      } as unknown as UserProfile;
+        createdAt: data.createdAt ? new Date(data.createdAt) : new Date(),
+        updatedAt: data.updatedAt ? new Date(data.updatedAt) : new Date(),
+        ativo: data.ativo ?? data.isActive ?? true,
+      };
       return { profile, role: mapped };
     }
   }

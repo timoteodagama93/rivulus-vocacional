@@ -67,7 +67,7 @@ export const handler: Handler = async (event) => {
       uid: userRecord.uid,
       nome,
       nomeBusca: nome.toLowerCase(),
-      email: email || "",
+      email: authEmail,
       documento: documento || "",
       authEmail,
       loginMethod,
@@ -89,7 +89,24 @@ export const handler: Handler = async (event) => {
       updatedAt: new Date().toISOString(),
     };
 
+    // grava em 'estudantes'
     await db.collection("estudantes").doc(userRecord.uid).set(estudanteDoc);
+
+    // grava também em 'users' para que o fluxo de login (que consulta users/{uid}) encontre o perfil
+    const usersDoc = {
+      uid: userRecord.uid,
+      email: authEmail,
+      displayName: nome,
+      role: "estudante",
+      isActive: true,
+      isVerified: false,
+      lastLogin: null,
+      pictureUrl: null,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    };
+
+    await db.collection("users").doc(userRecord.uid).set(usersDoc);
 
     return {
       statusCode: 200,
