@@ -1,0 +1,57 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "estudantes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "escolaId",     "order": "ASCENDING"  },
+        { "fieldPath": "nivelEnsino",  "order": "ASCENDING"  },
+        { "fieldPath": "nomeBusca",    "order": "ASCENDING"  }
+      ]
+    },
+    {
+      "collectionGroup": "estudantes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "orientadorId", "order": "ASCENDING"  },
+        { "fieldPath": "ativo",        "order": "ASCENDING"  },
+        { "fieldPath": "createdAt",    "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "resultados",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        { "fieldPath": "estudanteId",  "order": "ASCENDING"  },
+        { "fieldPath": "testeArea",    "order": "ASCENDING"  },
+        { "fieldPath": "completadoEm", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "relatorios",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "estudanteId",  "order": "ASCENDING"  },
+        { "fieldPath": "estado",       "order": "ASCENDING"  },
+        { "fieldPath": "geradoEm",     "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "encaminhamentos",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "estudanteId",  "order": "ASCENDING"  },
+        { "fieldPath": "estado",       "order": "ASCENDING"  }
+      ]
+    },
+    {
+      "collectionGroup": "testes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "area",         "order": "ASCENDING"  },
+        { "fieldPath": "ativo",        "order": "ASCENDING"  }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

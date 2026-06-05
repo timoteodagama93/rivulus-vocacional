@@ -1,0 +1,100 @@
+// ============================================================
+// RIVULUS VOCACIONAL — Regras de Segurança Firestore
+// Copiar para: Firebase Console > Firestore > Rules
+// ============================================================
+
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAuth() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuth() &&
+        get(/databases/$(database)/documents/admins/$(request.auth.uid)).data.role == "administrador";
+    }
+
+    function isOrientador() {
+      return isAuth() &&
+        get(/databases/$(database)/documents/orientadores/$(request.auth.uid)).data.role == "orientador";
+    }
+
+    function isOwner(userId) {
+      return isAuth() && request.auth.uid == userId;
+    }
+
+    // Estudantes
+    match /estudantes/{estudanteId} {
+      allow read:   if isOwner(estudanteId) || isOrientador() || isAdmin();
+      allow create: if isAuth();
+      allow update: if isOwner(estudanteId) || isOrientador() || isAdmin();
+      allow delete: if isAdmin();
+
+      match /resultados/{resultadoId} {
+        allow read:   if isOwner(estudanteId) || isOrientador() || isAdmin();
+        allow create: if isOwner(estudanteId);
+        allow update: if isOrientador() || isAdmin();
+        allow delete: if isAdmin();
+      }
+    }
+
+    // Orientadores
+    match /orientadores/{orientadorId} {
+      allow read:  if isAuth();
+      allow write: if isAdmin();
+    }
+
+    // Catálogo de testes (read-only para utilizadores)
+    match /testes/{testeId} {
+      allow read:  if isAuth();
+      allow write: if isAdmin();
+    }
+
+    // Perfis vocacionais
+    match /perfis_vocacionais/{perfilId} {
+      allow read:  if isAuth();
+      allow write: if isAdmin() || isOrientador();
+    }
+
+    // Relatórios
+    match /relatorios/{relatorioId} {
+      allow read:   if isAuth();
+      allow create: if isOrientador() || isAdmin();
+      allow update: if isOrientador() || isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // Planos de estudo/carreira
+    match /planos/{planoId} {
+      allow read, write: if isAuth();
+    }
+
+    // Instituições parceiras (leitura pública)
+    match /instituicoes/{instId} {
+      allow read:  if true;
+      allow write: if isAdmin();
+    }
+
+    // Encaminhamentos
+    match /encaminhamentos/{encId} {
+      allow read:   if isAuth();
+      allow create: if isAuth();
+      allow update: if isOrientador() || isAdmin();
+    }
+
+    // Escolas
+    match /escolas/{escolaId} {
+      allow read:  if isAuth();
+      allow write: if isAdmin();
+    }
+
+    // Estatísticas institucionais
+    match /estatisticas/{statId} {
+      allow read:  if isOrientador() || isAdmin();
+      allow write: if isAdmin();
+    }
+  }
+}
