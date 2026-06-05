@@ -1,6 +1,6 @@
 "use client";
 // ============================================================
-// RIVULUS VOCACIONAL — Página de Perfil do Estudante
+// GAMA VOCACIONAL — Página de Perfil do Estudante
 // ============================================================
 import { useEffect, useState } from "react";
 import { useAuth } from "@/lib/hooks/useAuth";

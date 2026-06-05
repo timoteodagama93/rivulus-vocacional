@@ -1,6 +1,6 @@
 "use client";
 // ============================================================
-// RIVULUS VOCACIONAL — Nova Escola
+// GAMA VOCACIONAL — Nova Escola
 // /admin/escolas/novo
 // ============================================================
 import { useCallback, useState } from "react";

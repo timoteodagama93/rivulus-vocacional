@@ -1,5 +1,5 @@
 // ============================================================
-// RIVULUS VOCACIONAL — Layout do Estudante
+// GAMA VOCACIONAL — Layout do Estudante
 // ============================================================
 import AuthGuard from "@/components/layout/AuthGuard";
 import SidebarEstudante from "@/components/layout/SidebarEstudante";

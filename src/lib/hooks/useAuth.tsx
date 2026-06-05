@@ -1,6 +1,6 @@
 "use client";
 // ============================================================
-// RIVULUS VOCACIONAL — Hook de Autenticação
+// GAMA VOCACIONAL — Hook de Autenticação
 // ============================================================
 import { useState, useEffect, createContext, useContext } from "react";
 import {

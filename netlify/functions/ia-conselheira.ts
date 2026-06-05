@@ -1,5 +1,5 @@
 // ============================================================
-// RIVULUS VOCACIONAL — Netlify Function: IA Conselheira
+// GAMA VOCACIONAL — Netlify Function: IA Conselheira
 // POST /api/ia-conselheira
 // Body: { pergunta: string, contexto?: object }
 // ============================================================
@@ -8,7 +8,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
 
-const SYSTEM_PROMPT = `Você é a IA Conselheira do Rivulus Vocacional, plataforma especializada
+const SYSTEM_PROMPT = `Você é a IA Conselheira do GAMA VOCACIONAL, plataforma especializada
 de orientação vocacional da Academia Gama, em Angola.
 
 Missão: Apoiar estudantes angolanos a descobrirem o seu caminho académico e profissional.

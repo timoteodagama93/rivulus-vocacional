@@ -1,5 +1,5 @@
 // ============================================================
-// RIVULUS VOCACIONAL — Catálogo de Testes (18 no total)
+// GAMA VOCACIONAL — Catálogo de Testes (18 no total)
 // ============================================================
 import type { TipoTeste, AreaAvaliacao, NivelEnsino } from "@/types";
 

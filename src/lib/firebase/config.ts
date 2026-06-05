@@ -1,5 +1,5 @@
 // ============================================================
-// RIVULUS VOCACIONAL — Configuração Firebase
+// GAMA VOCACIONAL — Configuração Firebase
 // ============================================================
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAuth } from "firebase/auth";

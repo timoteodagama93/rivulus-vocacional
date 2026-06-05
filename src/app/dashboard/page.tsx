@@ -1,6 +1,6 @@
 "use client";
 // ============================================================
-// RIVULUS VOCACIONAL — Dashboard (redireciona por role)
+// GAMA VOCACIONAL — Dashboard (redireciona por role)
 // ============================================================
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";

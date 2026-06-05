@@ -1,5 +1,5 @@
 // ============================================================
-// RIVULUS VOCACIONAL — Tipos Base
+// GAMA VOCACIONAL — Tipos Base
 // Academia Gama | vocacional.academiagama.ao
 // ============================================================
 

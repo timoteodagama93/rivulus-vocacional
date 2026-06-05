@@ -1,6 +1,6 @@
 "use client";
 // ============================================================
-// RIVULUS VOCACIONAL — Resultado do Teste
+// GAMA VOCACIONAL — Resultado do Teste
 // /avaliacoes/[testeId]/resultado?id=xxx
 // ============================================================
 import { useEffect, useState } from "react";

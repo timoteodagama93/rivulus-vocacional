@@ -1,6 +1,6 @@
 "use client";
 // ============================================================
-// RIVULUS VOCACIONAL — Gestão de Escolas
+// GAMA VOCACIONAL — Gestão de Escolas
 // /admin/escolas
 // ============================================================
 import { useEffect, useMemo, useState } from "react";

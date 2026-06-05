@@ -1,5 +1,5 @@
 // ============================================================
-// RIVULUS VOCACIONAL — Colecções Firestore
+// GAMA VOCACIONAL — Colecções Firestore
 // ============================================================
 export const COLLECTIONS = {
   ESTUDANTES:         "estudantes",

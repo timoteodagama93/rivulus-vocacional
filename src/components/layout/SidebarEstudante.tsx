@@ -1,6 +1,6 @@
 "use client";
 // ============================================================
-// RIVULUS VOCACIONAL — Sidebar do Estudante
+// GAMA VOCACIONAL — Sidebar do Estudante
 // ============================================================
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -58,7 +58,7 @@ export default function SidebarEstudante() {
           </div>
           <div>
             <div style={{ color: "#fff", fontSize: 13, fontWeight: 600, lineHeight: 1.2 }}>
-              Rivulus Vocacional
+              GAMA VOCACIONAL
             </div>
             <div style={{ color: "rgba(255,255,255,0.4)", fontSize: 10 }}>Academia Gama</div>
           </div>

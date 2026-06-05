@@ -1,4 +1,4 @@
-// RIVULUS VOCACIONAL — Layout: avaliacoes
+// GAMA VOCACIONAL — Layout: avaliacoes
 import AuthGuard from "@/components/layout/AuthGuard";
 import SidebarEstudante from "@/components/layout/SidebarEstudante";
 

@@ -1,6 +1,6 @@
 "use client";
 // ============================================================
-// RIVULUS VOCACIONAL — Player de Testes
+// GAMA VOCACIONAL — Player de Testes
 // /avaliacoes/[testeId]
 // ============================================================
 import { useEffect, useState, useCallback } from "react";

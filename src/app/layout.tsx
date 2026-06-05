@@ -1,5 +1,5 @@
 // ============================================================
-// RIVULUS VOCACIONAL — Layout Raiz (Next.js App Router)
+// GAMA VOCACIONAL — Layout Raiz (Next.js App Router)
 // ============================================================
 import type { Metadata } from "next";
 import { AuthProvider } from "@/lib/hooks/useAuth";
@@ -7,11 +7,11 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Rivulus Vocacional",
-    default: "Rivulus Vocacional — Academia Gama",
+    template: "%s | GAMA VOCACIONAL",
+    default: "GAMA VOCACIONAL — Academia Gama",
   },
   description: "Plataforma de orientação vocacional e profissional para estudantes angolanos.",
-  applicationName: "Rivulus Vocacional",
+  applicationName: "GAMA VOCACIONAL",
   keywords: ["orientação vocacional", "Angola", "Academia Gama", "carreira", "RIASEC"],
   authors: [{ name: "Academia Gama" }],
 };

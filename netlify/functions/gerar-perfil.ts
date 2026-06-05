@@ -1,5 +1,5 @@
 // ============================================================
-// RIVULUS VOCACIONAL — Netlify Function: Gerar Perfil Vocacional
+// GAMA VOCACIONAL — Netlify Function: Gerar Perfil Vocacional
 // POST /api/gerar-perfil
 // Body: { estudanteId: string, resultadosIds: string[] }
 // ============================================================

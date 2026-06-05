@@ -1,6 +1,6 @@
 "use client";
 // ============================================================
-// RIVULUS VOCACIONAL — Sidebar do Administrador
+// GAMA VOCACIONAL — Sidebar do Administrador
 // ============================================================
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -76,7 +76,7 @@ export default function SidebarAdmin() {
           </div>
           <div>
             <div style={{ color: "#fff", fontSize: 13, fontWeight: 600, lineHeight: 1.2 }}>
-              Rivulus Vocacional
+              GAMA VOCACIONAL
             </div>
             <div style={{ color: "rgba(255,255,255,0.4)", fontSize: 10 }}>Academia Gama · Admin</div>
           </div>

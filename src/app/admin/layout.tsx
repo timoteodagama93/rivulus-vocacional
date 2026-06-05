@@ -1,4 +1,4 @@
-// RIVULUS VOCACIONAL — Layout: admin
+// GAMA VOCACIONAL — Layout: admin
 import AuthGuard from "@/components/layout/AuthGuard";
 import SidebarAdmin from "@/components/layout/SidebarAdmin";
 

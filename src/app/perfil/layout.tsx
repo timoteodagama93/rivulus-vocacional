@@ -1,4 +1,4 @@
-// RIVULUS VOCACIONAL — Layout: perfil
+// GAMA VOCACIONAL — Layout: perfil
 import AuthGuard from "@/components/layout/AuthGuard";
 import SidebarEstudante from "@/components/layout/SidebarEstudante";
 

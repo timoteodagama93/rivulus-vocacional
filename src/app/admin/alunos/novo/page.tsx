@@ -1,6 +1,6 @@
 "use client";
 // ============================================================
-// RIVULUS VOCACIONAL — Novo Aluno
+// GAMA VOCACIONAL — Novo Aluno
 // /admin/alunos/novo
 // ============================================================
 import { useState } from "react";

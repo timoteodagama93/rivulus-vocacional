@@ -1,6 +1,6 @@
 "use client";
 // ============================================================
-// RIVULUS VOCACIONAL — Estatísticas do Administrador
+// GAMA VOCACIONAL — Estatísticas do Administrador
 // /admin/estatisticas
 // ============================================================
 import { useEffect, useMemo, useState } from "react";

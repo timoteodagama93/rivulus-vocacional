@@ -1,6 +1,6 @@
 "use client";
 // ============================================================
-// RIVULUS VOCACIONAL — AuthGuard
+// GAMA VOCACIONAL — AuthGuard
 // Protege rotas por role. Redireciona não autenticados.
 // ============================================================
 import { useEffect } from "react";

@@ -1,6 +1,6 @@
 "use client";
 // ============================================================
-// RIVULUS VOCACIONAL — Página Raiz (/)
+// GAMA VOCACIONAL — Página Raiz (/)
 // Redireciona utilizadores autenticados para o dashboard,
 // não autenticados para o login.
 // ============================================================

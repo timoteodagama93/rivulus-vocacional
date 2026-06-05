@@ -1,6 +1,6 @@
 "use client";
 // ============================================================
-// RIVULUS VOCACIONAL — PageHeader
+// GAMA VOCACIONAL — PageHeader
 // Header superior reutilizável em todas as páginas
 // ============================================================
 interface PageHeaderProps {

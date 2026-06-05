@@ -1,6 +1,6 @@
 "use client";
 // ============================================================
-// RIVULUS VOCACIONAL — Dashboard do Estudante
+// GAMA VOCACIONAL — Dashboard do Estudante
 // ============================================================
 import { useEffect, useState } from "react";
 import { collection, query, where, getDocs, doc, getDoc } from "firebase/firestore";

@@ -1,6 +1,6 @@
 "use client";
 // ============================================================
-// RIVULUS VOCACIONAL — Página de Login
+// GAMA VOCACIONAL — Página de Login
 // ============================================================
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -44,7 +44,7 @@ export default function LoginPage() {
             <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center">
               <span className="text-white text-xs font-bold">RV</span>
             </div>
-            <h1 className="text-xl font-semibold text-slate-900">Rivulus Vocacional</h1>
+            <h1 className="text-xl font-semibold text-slate-900">GAMA VOCACIONAL</h1>
           </div>
           <p className="text-slate-500 text-sm pl-10">Academia Gama</p>
         </div>

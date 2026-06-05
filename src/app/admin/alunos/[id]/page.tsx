@@ -1,6 +1,6 @@
 "use client";
 // ============================================================
-// RIVULUS VOCACIONAL — Detalhes do Aluno
+// GAMA VOCACIONAL — Detalhes do Aluno
 // /admin/alunos/[id]
 // ============================================================
 import { useEffect, useState } from "react";

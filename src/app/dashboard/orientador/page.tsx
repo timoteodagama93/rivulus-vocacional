@@ -1,6 +1,6 @@
 "use client";
 // ============================================================
-// RIVULUS VOCACIONAL — Dashboard do Orientador
+// GAMA VOCACIONAL — Dashboard do Orientador
 // ============================================================
 import { useAuth } from "@/lib/hooks/useAuth";
 

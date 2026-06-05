@@ -1,5 +1,5 @@
 // ============================================================
-// RIVULUS VOCACIONAL — Layout do Administrador
+// GAMA VOCACIONAL — Layout do Administrador
 // ============================================================
 import AuthGuard from "@/components/layout/AuthGuard";
 import SidebarAdmin from "@/components/layout/SidebarAdmin";

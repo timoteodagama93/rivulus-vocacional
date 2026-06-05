@@ -1,5 +1,5 @@
 // ============================================================
-// RIVULUS VOCACIONAL — StatCard
+// GAMA VOCACIONAL — StatCard
 // Cartão de estatística reutilizável nos dashboards
 // ============================================================
 interface StatCardProps {

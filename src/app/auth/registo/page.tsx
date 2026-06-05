@@ -1,7 +1,7 @@
 "use client";
 
 // ============================================================
-// RIVULUS VOCACIONAL — Página de Registo
+// GAMA VOCACIONAL — Página de Registo
 // ============================================================
 
 import Link from "next/link";
@@ -23,7 +23,7 @@ export default function RegisterPage() {
             </h1>
           </div>
           <p className="text-slate-500 text-sm pl-10">
-            Rivulus Vocacional — Academia Gama
+            GAMA VOCACIONAL — Academia Gama
           </p>
         </div>
 

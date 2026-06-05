@@ -1,6 +1,6 @@
 "use client";
 // ============================================================
-// RIVULUS VOCACIONAL — Avaliações: Listagem de Testes
+// GAMA VOCACIONAL — Avaliações: Listagem de Testes
 // ============================================================
 import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
