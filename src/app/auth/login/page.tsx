@@ -5,6 +5,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/hooks/useAuth";
+import "../../globals.css";
 
 export default function LoginPage() {
   const { signIn } = useAuth();
