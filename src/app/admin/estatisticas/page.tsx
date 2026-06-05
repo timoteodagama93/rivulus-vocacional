@@ -35,7 +35,7 @@ export default function AdminEstatisticasPage() {
         ]);
 
         setAlunos(alunosSnap.docs.map((doc) => ({ id: doc.id, ...(doc.data() as Estudante) })));
-        setEscolas(escolasSnap.docs.map((doc) => ({ id: doc.id, ...(doc.data() as Escola) })));
+        setEscolas(escolasSnap.docs.map((doc) => ({ ...(doc.data() as Escola) })));
       } catch (err) {
         console.error(err);
         setErro("Não foi possível carregar as estatísticas. Tente novamente mais tarde.");

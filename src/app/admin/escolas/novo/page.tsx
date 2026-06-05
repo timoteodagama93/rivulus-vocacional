@@ -348,16 +348,16 @@ export default function AdminEscolaNovaPage() {
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
                 <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                   Requisitos
-                  <input value={(curso.requisitos ?? []).join(", ")} onChange={(e) => atualizarCurso(index, "requisitos", e.target.value.split(",").map((t) => t.trim()).filter(Boolean))} placeholder="Digite itens separados por vírgula" />
+                  <input value={(curso.requisitos ?? []).join(", ")} onChange={(e) => atualizarCurso(index, "requisitos", e.target.value)} placeholder="Digite itens separados por vírgula" />
                 </label>
                 <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                   Competências
-                  <input value={(curso.competencias ?? []).join(", ")} onChange={(e) => atualizarCurso(index, "competencias", e.target.value.split(",").map((t) => t.trim()).filter(Boolean))} placeholder="Digite itens separados por vírgula" />
+                  <input value={(curso.competencias ?? []).join(", ")} onChange={(e) => atualizarCurso(index, "competencias", e.target.value)} placeholder="Digite itens separados por vírgula" />
                 </label>
               </div>
               <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                 Áreas relacionadas
-                <input value={(curso.areasRelacionadas ?? []).join(", ")} onChange={(e) => atualizarCurso(index, "areasRelacionadas", e.target.value.split(",").map((t) => t.trim()).filter(Boolean))} placeholder="Digite termos separados por vírgula" />
+                <input value={(curso.areasRelacionadas ?? []).join(", ")} onChange={(e) => atualizarCurso(index, "areasRelacionadas", e.target.value)} placeholder="Digite termos separados por vírgula" />
               </label>
             </div>
           ))}
