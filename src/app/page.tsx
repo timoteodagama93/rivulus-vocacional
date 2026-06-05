@@ -11,7 +11,7 @@ import { useAuth } from "@/lib/hooks/useAuth";
 export default function HomePage() {
   const { user, loading } = useAuth();
   const router = useRouter();
-
+  console.log("HomePage render - user:", user, "loading:", loading);
   useEffect(() => {
     if (loading) return;
     if (user) {

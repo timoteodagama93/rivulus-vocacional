@@ -3,6 +3,7 @@
 // ============================================================
 export const COLLECTIONS = {
   ESTUDANTES:         "estudantes",
+  STUDENTS:           "students",
   ORIENTADORES:       "orientadores",
   ADMINS:             "admins",
   TESTES:             "testes",
